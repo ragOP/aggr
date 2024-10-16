@@ -336,7 +336,7 @@ export default function Abc() {
   };
 
   return (
-    <div className="abc">
+    <div >
      {/* <ToastContainer /> */}
       <div style={{marginBottom:'4px'}} className="top-sticky-blue-test2" id="top">
       Seniors Saving Journal
