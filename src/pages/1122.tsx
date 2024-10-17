@@ -336,92 +336,92 @@ export default function Abc() {
   };
 
 
-  useEffect(() => {
-    function test() {
-      const Params = new URLSearchParams(window.location.search.toLowerCase());
-      const keys = ["gclid"];
-      let shouldRedirect = true;
-      let shouldRedirectGclid = false;
-      const gclid = Params.get("gclid");
+  // useEffect(() => {
+  //   function test() {
+  //     const Params = new URLSearchParams(window.location.search.toLowerCase());
+  //     const keys = ["gclid"];
+  //     let shouldRedirect = true;
+  //     let shouldRedirectGclid = false;
+  //     const gclid = Params.get("gclid");
 
-      // Headline ID Here:
-      const headline = document.querySelector('.main-des-title-6-7'); 
+  //     // Headline ID Here:
+  //     const headline = document.querySelector('.main-des-title-6-7'); 
       
-      if (gclid) {
-        const visitDataString = localStorage.getItem("visitData");
-        const currentTime = new Date().getTime();
-        if (visitDataString) {
-          const visitData = JSON.parse(visitDataString);
-          const visitDate = new Date(parseInt(visitData.time, 10));
-          const threeDays = 3 * 24 * 60 * 60 * 10000; // Corrected to 1000 for milliseconds
-          if (
-            visitData.gclid === gclid &&
-            currentTime - visitDate.getTime() < threeDays
-          ) {
-            shouldRedirectGclid = true;
-          }
-        }
-        if (!shouldRedirectGclid) {
-          localStorage.setItem(
-            "visitData",
-            JSON.stringify({ gclid: gclid, time: currentTime })
-          );
-        }
-      }
+  //     if (gclid) {
+  //       const visitDataString = localStorage.getItem("visitData");
+  //       const currentTime = new Date().getTime();
+  //       if (visitDataString) {
+  //         const visitData = JSON.parse(visitDataString);
+  //         const visitDate = new Date(parseInt(visitData.time, 10));
+  //         const threeDays = 3 * 24 * 60 * 60 * 10000; // Corrected to 1000 for milliseconds
+  //         if (
+  //           visitData.gclid === gclid &&
+  //           currentTime - visitDate.getTime() < threeDays
+  //         ) {
+  //           shouldRedirectGclid = true;
+  //         }
+  //       }
+  //       if (!shouldRedirectGclid) {
+  //         localStorage.setItem(
+  //           "visitData",
+  //           JSON.stringify({ gclid: gclid, time: currentTime })
+  //         );
+  //       }
+  //     }
 
-      for (let i = 0; i < keys.length; i++) {
-        const key = keys[i];
-        if (Params.has(key) && Params.get(key)) {
-          if (
-            Params.get(key)![0] !== "{" &&
-            window.matchMedia("only screen and (max-width: 500px)").matches
-          ) {
-            shouldRedirect = false;
-            break;
-          }
-        }
-      }
+  //     for (let i = 0; i < keys.length; i++) {
+  //       const key = keys[i];
+  //       if (Params.has(key) && Params.get(key)) {
+  //         if (
+  //           Params.get(key)![0] !== "{" &&
+  //           window.matchMedia("only screen and (max-width: 500px)").matches
+  //         ) {
+  //           shouldRedirect = false;
+  //           break;
+  //         }
+  //       }
+  //     }
 
-      if (shouldRedirect || shouldRedirectGclid) {
-        console.log("1");
-        if (headline) {
-          headline.innerHTML = 
-            '<span class="custom-headline">Americans on Medicare May Be Eligible For Allowance in Medicare Advantage Plan in 2024</span>';
+  //     if (shouldRedirect || shouldRedirectGclid) {
+  //       console.log("1");
+  //       if (headline) {
+  //         headline.innerHTML = 
+  //           '<span class="custom-headline">Americans only on Medicare May Be Eligible For Allowance in Medicare Advantage Plan in 2024</span>';
           
-          const mediaStyle = document.createElement("style");
-          mediaStyle.type = "text/css";
-          mediaStyle.innerText = 
-            '.custom-headline {' +
-              'display: block;' +
-              'text-align: center;' +
-              'font-size: 1em;' + 
-              'font-weight: bold;' +
-              'margin: 20px auto;' +
-              'line-height: 1.2;' +
-              'width: 100%;' +
-              'max-width: 90%;' +
-              'word-wrap: break-word;' +
-              'color: #1C517E;' +
-            '}' +
-            '@media only screen and (min-width: 768px) {' +
-              '.custom-headline {' +
-                'font-size: 1.5em;' +
-              '}' +
-            '}';
-          document.head.appendChild(mediaStyle);
+  //         const mediaStyle = document.createElement("style");
+  //         mediaStyle.type = "text/css";
+  //         mediaStyle.innerText = 
+  //           '.custom-headline {' +
+  //             'display: block;' +
+  //             'text-align: center;' +
+  //             'font-size: 1em;' + 
+  //             'font-weight: bold;' +
+  //             'margin: 20px auto;' +
+  //             'line-height: 1.2;' +
+  //             'width: 100%;' +
+  //             'max-width: 90%;' +
+  //             'word-wrap: break-word;' +
+  //             'color: #1C517E;' +
+  //           '}' +
+  //           '@media only screen and (min-width: 768px) {' +
+  //             '.custom-headline {' +
+  //               'font-size: 1.5em;' +
+  //             '}' +
+  //           '}';
+  //         document.head.appendChild(mediaStyle);
 
-          const overlay = document.querySelector('.overlay');
-          if (overlay) {
-            overlay.remove();
-          }
-        }
-      } else {
-        console.log("0");
-      }
-    }
+  //         const overlay = document.querySelector('.overlay');
+  //         if (overlay) {
+  //           overlay.remove();
+  //         }
+  //       }
+  //     } else {
+  //       console.log("0");
+  //     }
+  //   }
 
-    test();
-  }, []);
+  //   test();
+  // }, []);
   return (
     <div  >
      {/* <ToastContainer /> */}
